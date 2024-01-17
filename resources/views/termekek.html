@@ -1,0 +1,330 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        background-color: #fcfcfc;
+        margin: auto;
+        max-width: 1200px;
+        padding: 1em;
+    }
+    
+    h1 {
+        color: #bababa;
+        font-family: roboto, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    .card-container {
+        box-sizing: border-box;
+        display: grid;
+        grid-column-gap: 50px;
+        grid-row-gap: 50px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        padding: 1em 0;
+    }
+    
+    .car-card {
+        background-color: #fff;
+        box-shadow: 0px 4px 8px #ededed;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 3fr 1fr;
+        height: 300px;
+        padding: 10px 45px;
+        transition: 0.5s ease;
+        width: 100%;
+    }
+    
+    .car-card img {
+        max-width: 350px;
+        object-fit: contain;
+        place-self: center;
+        transition: 0.5s ease;
+        width: 100%;
+    }
+    
+    .car-card ul {
+        align-self: center;
+        color: #bababa;
+        display: flex;
+        font-family: roboto, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        justify-content: space-between;
+        list-style-type: none;
+        width: 100%;
+    }
+    
+    .car-card li {
+        text-align: center;
+    }
+    
+    li:nth-child(2) {
+        margin: auto 15px;
+    }
+    
+    .car-card h2 {
+        align-self: center;
+        color: #000;
+        font-family: roboto, sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 26px;
+    }
+    /* hover effect */
+    
+    .car-link {
+        text-decoration: none;
+        transition: 0.5s ease;
+    }
+    
+    .car-link:hover .car-card {
+        box-shadow: 0px 6px 8px #d9d9d9;
+        transition: 0.5s ease;
+    }
+    
+    .car-link:hover img {
+        transform: scale(1.05);
+        transition: 0.5s ease;
+    }
+    /* button */
+    
+    .button {
+        align-items: center;
+        background-color: #fff;
+        border: 0;
+        border-radius: 6px;
+        box-shadow: 0px 2px 4px #d9d9d9;
+        color: #bababa;
+        display: flex;
+        font-family: roboto, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 18px;
+        margin: 3em auto 3em;
+        max-width: 200px;
+        padding: 12px;
+        text-align: center;
+        width: 100%;
+        transition: 0.2s;
+    }
+    
+    .button:hover {
+        box-shadow: 0px 4px 4px #d9d9d9;
+        cursor: pointer;
+        transition: 0.2s;
+        color: #aaaaaa;
+    }
+    
+    .button:focus {
+        outline: 0;
+    }
+    
+    @media (max-width: 700px) {
+        .card-container {
+            grid-column-gap: 50px;
+            grid-row-gap: 50px;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+        .car-card h2 {
+            font-size: 18px;
+            line-height: 20px;
+        }
+        .car-card ul {
+            font-size: 14px;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 18px;
+            text-align: center;
+        }
+        .car-card ul {
+            flex-direction: column;
+        }
+        .car-card li {
+            margin-bottom: 5px;
+        }
+        li:nth-child(2) {
+            margin: 0 0 5px;
+        }
+    }
+</style>
+
+<head>
+    <link rel="stylesheet" href="https://use.typekit.net/gwb0rvj.css">
+</head>
+
+<body>
+    <h1>Supercars & Daily Driving</h1>
+    <div class="card-container js-widget"></div>
+
+    <!-- scripts -->
+    <script>
+        var myList = [{
+            carName: "2019 Toyota Supra",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585878339/001_za_1.png",
+            carLbs: "365",
+            carRwhp: "335",
+            carPrice: "49,990",
+            carType: "rwd"
+        }, {
+            carName: "Lexus LFA",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585878341/2020LEC350003_1280_03_1.png",
+            carLbs: "354",
+            carRwhp: "553",
+            carPrice: "375,000",
+            carType: "rwd"
+        }, {
+            carName: "Lamborghini Aventador",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585924300/lambo-transparent-side-view-10_1.png",
+            carLbs: "507",
+            carRwhp: "729",
+            carPrice: "463,000",
+            carType: "awd"
+        }, {
+            carName: "Lamborghini Huracán",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585924351/137-1376257_the-last-true-supercar-lamborghini-huracan-left-side_1.png",
+            carLbs: "398",
+            carRwhp: "602",
+            carPrice: "261,000",
+            carType: "awd"
+        }, {
+            carName: "Bugatti Chiron",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585924401/bugatti_PNG19_1.png",
+            carLbs: "1,180",
+            carRwhp: "1479",
+            carPrice: "3,000,000",
+            carType: "awd"
+        }, {
+            carName: "Bugatti Veyron",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585924491/bugatti_PNG28_1.png",
+            carLbs: "1,106",
+            carRwhp: "1200",
+            carPrice: "1,700,000",
+            carType: "awd"
+        }, {
+            carName: "McLaren P1",
+            carImage: "",
+            carLbs: "",
+            carRwhp: "",
+            carPrice: "",
+            carType: "rwd"
+        }, {
+            carName: "Ferrari F8 Spider",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1586466868/2020_24_1.png",
+            carLbs: "568",
+            carRwhp: "710",
+            carPrice: "274,000",
+            carType: "rwd"
+        }, {
+            carName: "Ferrari LaFerrari",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1586467122/red-sports-car-png-4_1.png",
+            carLbs: "664",
+            carRwhp: "949",
+            carPrice: "1,400,000",
+            carType: "rwd"
+        }, {
+            carName: "Koenigsegg Regera",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1586467369/Koenigsegg_Regera_side5_1.png",
+            carLbs: "642",
+            carRwhp: "700",
+            carPrice: "1,900,000",
+            carType: "rwd"
+        }, {
+            carName: "2020 Toyota 86",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585878340/35565_preview_1.png",
+            carLbs: "156",
+            carRwhp: "205",
+            carPrice: "27,060",
+            carType: "rwd"
+        }, {
+            carName: "2020 Toyota Corolla",
+            carImage: "https://res.cloudinary.com/dmnixrpra/image/upload/v1585878224/2020-toyota-corolla-le-sideview_1.png",
+            carLbs: "70",
+            carRwhp: "132",
+            carPrice: "19,600",
+            carType: "fwd"
+        }];
+
+        var widget = document.querySelector(".js-widget");
+
+        function buildList(carNum) {
+            if (document.querySelector(".button")) {
+                document.querySelector(".button").outerHTML = "";
+            }
+
+            var widgetContent = "";
+
+            let i = carNum;
+            for (; i < carNum + 4; i++) {
+                if (myList[i].carImage === "") {
+                    myList[i].carImage =
+                        "https://res.cloudinary.com/dmnixrpra/image/upload/v1585925027/IMAGE_COMING_SOON.png";
+                }
+
+                // detecting if rwd awd or fwd, assigning it to wheelType variable
+                var wheelType = "";
+                if (myList[i].carType == "rwd") {
+                    wheelType = " rwhp";
+                } else if (myList[i].carType == "fwd") {
+                    wheelType = " fwhp";
+                } else {
+                    wheelType = " hp";
+                }
+
+                // looping through each car list object
+                widgetContent +=
+                    '<a class="car-link" href="url">' +
+                    '<div class="car-card">' +
+                    "<h2>" +
+                    myList[i].carName +
+                    "</h2>" +
+                    '<img src="' +
+                    myList[i].carImage +
+                    '">' +
+                    "<ul>" +
+                    "<li>" +
+                    myList[i].carLbs +
+                    " lb-ft" +
+                    "</li>" +
+                    "<li>" +
+                    myList[i].carRwhp +
+                    wheelType +
+                    "</li>" +
+                    "<li>" +
+                    "$" +
+                    myList[i].carPrice +
+                    "</li>" +
+                    "</ul>" +
+                    "</div>" +
+                    "</a>";
+            }
+
+            widget.insertAdjacentHTML("beforeend", widgetContent);
+            var buttonContent = "";
+            if (i < myList.length) {
+                buttonContent +=
+                    '<button class="button" type="button" onclick="buildList(' +
+                    i +
+                    ')">More Cars</button>';
+            }
+            widget.insertAdjacentHTML("afterend", buttonContent);
+        }
+
+        buildList(0);
+    </script>
+</body>
